@@ -1,0 +1,19 @@
+#!/bin/bash
+
+TRAFFIC="aaa"
+
+rm -rf work in*.txt out*.txt r*.txt 
+rm -rf Traffic/$TRAFFIC/Out/* 
+cp Traffic/$TRAFFIC/In/* .
+vsim -c -do simulate.do
+mv list.txt Power/Evaluation/
+rm -rf in*
+mv out* Traffic/$TRAFFIC/Out/
+mv r*.txt Traffic/$TRAFFIC/Out/
+
+#show route taken
+cp ascii.php Traffic/$TRAFFIC/Out/
+cd Traffic/$TRAFFIC/Out/
+php ascii.php 
+cd ../../../
+
